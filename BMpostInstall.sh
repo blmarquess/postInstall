@@ -14,7 +14,7 @@ PROGRAMAS_PARA_INSTALAR=(
   wine
   nautilus
   nautilus-dropbox
-  docker
+  docker-ce
   docker-compose
   build-essential
   libssl-dev
@@ -24,6 +24,9 @@ PROGRAMAS_PARA_INSTALAR=(
   folder-color
   zsh
   nodejs
+  apt-transport-https
+  ca-certificates
+  software-properties-common
 )
 
 # -------------------------------TESTES E REQUISITOS----------------------------------------- #
@@ -48,8 +51,14 @@ sudo apt install -y gnome-sushi folder-color;
 echo -e "${VERDE}[INFO] - Prerequisitos para sistema${SEM_COR}"
 sudo apt purge -y nodejs npm;
 sudo apt purge -y nodejs*;
-sudo apt update && sudo apt dist-upgrade -y &&
+
+echo -e "${VERDE}[INFO] - Add Repositorio do NodeJS ${SEM_COR}"
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+echo -e "${VERDE}[INFO] - Add Repositorio do Docker ${SEM_COR}"
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+
+sudo apt update && sudo apt dist-upgrade -y &&
 
 ## Instalando pacotes e programas do repositório deb do Ubuntu ##
 echo -e "${VERDE}|:<======================================================>:|${SEM_COR}"
@@ -63,7 +72,11 @@ for nome_do_programa in ${PROGRAMAS_PARA_INSTALAR[@]}; do
 done
 
 echo -e "${VERDE}|:<======================================================>:|${SEM_COR}"
+echo -e "${VERDE}|:<============ Configurando o docker ===================>:|${SEM_COR}"
+sudo usermod -aG docker ${USER} -y 
+su - ${USER} -y 
 
+echo -e "${VERDE}|:<======================================================>:|${SEM_COR}"
 ## Adicionando repositório Flathub ##
 echo -e "${VERDE}[INFO] - Adicionando repositório Flathub...${SEM_COR}"
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && 
