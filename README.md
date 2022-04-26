@@ -1,9 +1,9 @@
-# postInstall
+# PostInstall Ubuntu e derivados
 
-##Setup que faço após instalar uma distro linux no meu PC
+## Setup que faço após instalar uma distro linux no meu PC
 
-este é o script que executo após a instalação do sistema no computador
->OBS: Este script foi feito pensando em uma distro baseada em Debian exemplo: 'ubuntu', linux-mint, PopOS, Deepin Linux etc...
+Este é o script que executo após a instalação do sistema no computador
+>OBS: Este script foi feito pensando em uma distro baseada em Debian exemplo: Ubuntu, Lumbutu, kubuntu, xubuntu, linux-mint, PopOS, Deepin Linux, ElementaryOS, PearOS, Zorin OS, JigOS, LXLE, KDE Neon, Alinex, BackBox, PC/OS, Shift Linux, DuZero e etc...
 >
 >Para distros ArchBase estarei postando brevemente
 
