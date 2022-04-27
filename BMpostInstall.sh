@@ -56,7 +56,7 @@ echo -e "${VERDE}[INFO] - Add Repositorio do NodeJS ${SEM_COR}"
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 echo -e "${VERDE}[INFO] - Add Repositorio do Docker ${SEM_COR}"
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" -y
 
 sudo apt update && sudo apt dist-upgrade -y &&
 
@@ -79,7 +79,7 @@ su - ${USER} -y
 echo -e "${VERDE}|:<======================================================>:|${SEM_COR}"
 ## Adicionando repositório Flathub ##
 echo -e "${VERDE}[INFO] - Adicionando repositório Flathub...${SEM_COR}"
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && 
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo -y && 
 
 ## Instalando Apps do Flathub ##
 echo -e "${VERDE}[INFO] - Instalando Apps do Flathub .... ${SEM_COR}"
@@ -121,14 +121,14 @@ echo -e "${VERDE}[INFO] -> Instalando gerenciador de walpapers...${SEM_COR}"
 sudo flatpak install flathub org.gabmus.hydrapaper -y &&
 echo -e "${VERDE}[INFO] -> Instalando app de webcam ...${SEM_COR}"
 sudo flatpak install flathub io.github.webcamoid.Webcamoid -y &&
-echo -e "${VERDE}[INFO] -> Instalando Stremio=PirataFlix  ...${SEM_COR}"
+echo -e "${VERDE}[INFO] -> Instalando Stremio  ...${SEM_COR}"
 sudo flatpak install flathub com.stremio.Stremio -y &&
 echo -e "${VERDE}[INFO] -> Instalando ONly-Office ...${SEM_COR}"
 sudo flatpak install flathub org.onlyoffice.desktopeditors -y &&
 echo -e "${VERDE}[INFO] -> Instalando Obsidian Editor de Markdown...${SEM_COR}"
 sudo flatpak install flathub md.obsidian.Obsidian -y &&
 echo -e "${VERDE}[INFO] -> Instalando Gerenciador de tarefas Planner...${SEM_COR}"
-sudo flatpak install flathub com.github.alainm23.planner -Y &&
+sudo flatpak install flathub com.github.alainm23.planner -y &&
 echo -e "${VERDE}[INFO] -> Instalando Microsoft Teams...${SEM_COR}"
 sudo flatpak install flathub com.microsoft.Teams -y &&
 echo -e "${VERDE}[INFO] -> Instalando GIMP ++ PhotoGIMP  ...${SEM_COR}"
