@@ -235,10 +235,12 @@ echo -e "${VERDE}|:<============================================================
 echo -e "${VERDE}|:>==          Baixando fontes com simbolus e ligatures           >==:|${SEM_COR}"
 echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
 
-wget -c https://github.com/blmarquess/postInstall/blob/main/fonts.tar.xz?raw=true
-tar -xf fonts.tar.xz
-cp fonts/* /usr/share/fonts/
+wget -c https://github.com/blmarquess/postInstall/blob/main/fonts.zip?raw=true
+
+mv fonts.zip?raw=true fonts.zip
+unzip fonts.zip
 mv fonts /home/$USER/.local/share/
+rm -rf fonts.zip
 fc-cache -f -v
 
 curl -L https://github.com/Diolinux/PhotoGIMP/releases/download/1.0/PhotoGIMP.by.Diolinux.v2020.for.Flatpak.zip -o ~/Downloads/PhotoGIMP.by.Diolinux.v2020.for.Flatpak.zip && unzip ~/Downloads/PhotoGIMP.by.Diolinux.v2020.for.Flatpak.zip -d ~/Downloads && cp -R ~/Downloads/PhotoGIMP\ by\ Diolinux\ v2020\ for\ Flatpak/.var/app/org.gimp.GIMP/config/GIMP/2.10/ ~/Library/Application\ Support/GIMP/2.10 && rm ~/Downloads/PhotoGIMP.by.Diolinux.v2020.for.Flatpak.zip
