@@ -18,8 +18,8 @@ Clique com o botão direito sobre ele selecione propriedades, vá até a aba per
 Copie o código abaixo e cole no terminal
 
 ```shell
-wget https://raw.githubusercontent.com/blmarquess/postInstall/main/BMpostInstall.sh &&
-sudo chmod a+x BMpostInstall.sh && ./BMpostInstall.sh
+wget https://raw.githubusercontent.com/blmarquess/postInstall/main/BMpostInstall-v2.sh &&
+sudo chmod a+x BMpostInstall-v2.sh && ./BMpostInstall-v2.sh
 ```
 
 Então é só aguardar a execução e ao terminar reinicie a maquina e ja estara tudo instalado 
