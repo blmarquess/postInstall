@@ -38,7 +38,6 @@ SNAP_APPS=(
   beekeeper-studio
   wps-office-multilang
   mysql-workbench-community
-  code
 )
 
 # SNAP_APP_CLASSIC=(
@@ -133,15 +132,13 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docke
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
 
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo -y && 
-
 sudo apt update && sudo apt dist-upgrade -y &&
 
 echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
 echo -e "${VERDE}|:>== Instalando pacotes e programas do repositório deb do Ubuntu >==:|${SEM_COR}"
 echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
 
-for nome_do_programa in ${PROGRAMAS_PARA_DEB[@]}; do
+for nome_do_programa in ${PROGRAMAS_DEB[@]}; do
   if ! dpkg -l | grep -q $nome_do_programa; then
     sudo apt install "$nome_do_programa" -y
   else
@@ -155,12 +152,13 @@ echo -e "${VERDE}|:<============================================================
 echo -e "${VERDE}|:>==                    Configurando o docker                    >==:|${SEM_COR}"
 echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
 
-sudo usermod -aG docker ${USER} -y 
+sudo usermod -aG docker ${USER}
 su - ${USER} -y 
 
 echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
 echo -e "${VERDE}|:>==            Instalando pacotes snap e flatpak                >==:|${SEM_COR}"
 echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && 
 
 for nome_do_programa in ${SNAP_APPS[@]}; do
   if ! snap list | grep -q $nome_do_programa; then
@@ -174,6 +172,8 @@ for nome_do_programa in ${SNAP_APPS[@]}; do
     echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
   fi
 done
+
+sudo snap install code --classic
 
 for nome_do_programa in ${FLATPAK_APPS[@]}; do
   if ! flatpak list | grep -q $nome_do_programa; then
@@ -212,17 +212,18 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
 echo -e "${VERDE}|:>==               Criando chave ssh em ./ssh                    >==:|${SEM_COR}"
 echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
-  if [ ! -f ~/.ssh/id_rsa.pub ];then
+  if [ ! -f ~/.ssh/id_ed25519.pub ];then
     # -q --> is silent
     # -t rsa --> generate key
     # -N '' --> tells to use empty passphrase
     # -f <file> --> the file with new key
-    ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa > /dev/null
+    ssh-keygen -q -t ed25519 -N '' -f ~/.ssh/id_ed25519 > /dev/null
+    ssh-add ~/.ssh/id_ed25519
   fi
 
 echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
 echo -e "${VERDE}|:>==               Essa é a chave ssh desta maquina              >==:|${SEM_COR}"
-cat ~/.ssh/id_rsa
+cat ~/.ssh/id_ed25519
 echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
 
 echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
