@@ -35,9 +35,7 @@ PROGRAMAS_DEB=(
 )
 
 SNAP_APPS=(
-  code
   spotify
-  node
   insomnia
   beekeeper-studio
   wps-office-multilang
@@ -207,7 +205,9 @@ for nome_do_programa in ${SNAP_APPS[@]}; do
   fi
 done
 
+## Instalando Snap Apps que utilizam confinamento classico
 sudo snap install code --classic
+sudo snap install node --classic
 
 for nome_do_programa in ${FLATPAK_APPS[@]}; do
   if ! flatpak list | grep -q $nome_do_programa; then
