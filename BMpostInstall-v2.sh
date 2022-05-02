@@ -5,6 +5,13 @@ VERMELHO='\e[1;91m'
 VERDE='\e[1;92m'
 SEM_COR='\e[0m'
 
+#USER CREDENTIALS
+$USER_NAME=$(whoami)
+# $USER_PASS=$(cat /etc/passwd | grep $USER_NAME | cut -d ":" -f2)
+$USER_PSW;
+$GIT_USER;
+$GIT_EMAIL;
+
 PROGRAMAS_DEB=(
   snapd
   git
@@ -99,6 +106,16 @@ else
 fi
 
 echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
+echo -e "${VERDE}|:>==                   Configurando credencias                   >==:|${SEM_COR}"
+echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
+
+dialog --title "Configurando credencias do git" --msgbox "Para continuar, digite o usuario e e-mail do GITHUB" 10 50
+--inputbox "Digite o seu e-mail do GITHUB" 10 50 2> $GIT_EMAIL
+dialog --title "Configurando credencias do git" --msgbox "Para continuar, digite o usuario e e-mail do GITHUB" 10 50
+--inputbox "Digite o seu usuario do GITHUB" 10 50 2> $GIT_USER
+
+
+echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
 echo -e "${VERDE}|:>==              Removendo travas eventuais do apt              >==:|${SEM_COR}"
 echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
 
@@ -153,7 +170,7 @@ echo -e "${VERDE}|:>==                    Configurando o docker                 
 echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
 
 sudo usermod -aG docker ${USER}
-su - ${USER} -y 
+su - ${USER}
 
 echo -e "${VERDE}|:<=================================================================>:|${SEM_COR}"
 echo -e "${VERDE}|:>==            Instalando pacotes snap e flatpak                >==:|${SEM_COR}"
