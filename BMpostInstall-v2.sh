@@ -209,6 +209,8 @@ done
 sudo snap install code --classic
 sudo snap install node --classic
 
+#classic confinament 
+
 for nome_do_programa in ${FLATPAK_APPS[@]}; do
   if ! flatpak list | grep -q $nome_do_programa; then
     echo -e ${AZUL}
@@ -242,19 +244,6 @@ mkdir /home/$USER/WORKSPACE/TRYBE/MSC
 mkdir /home/$USER/AppImage
 
 echo -e ${ROXO}
-echo "|:<=================================================================>:|"
-echo "|:>==                 Configurando o zsh/ohMyZsh                  >==:|"
-echo "|:<=================================================================>:|"
-
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-
-echo "|:<=================================================================>:|"
-echo "|:|        ----     Definindo zsh como shell padrão    ----         |:|"
-echo "|:<=================================================================>:|"
-
-chsh -s $(which zsh)
-echo -e ${SEM_COR}
 
 echo -e ${LARANJA}
 echo "|:<=================================================================>:|"
@@ -319,7 +308,34 @@ echo " "
 echo "|:<=================================================================>:|"
 echo -e ${SEM_COR}
 
+echo "|:<=================================================================>:|"
+echo "|:|        ----      Instalando DockerHub Desktop      ----         |:|"
+echo "|:<=================================================================>:|"
+
+curl https://desktop-stage.docker.com/linux/main/amd64/77103/docker-desktop.deb --output docker-desktop.deb
+sudo dpkg -i docker-desktop.deb
+
+sudo apt install -f -y
+
+systemctl --user enable docker-desktop
+
+
+echo "|:<=================================================================>:|"
+echo "|:|        ----     Definindo zsh como shell padrão    ----         |:|"
+echo "|:<=================================================================>:|"
+
+chsh -s $(which zsh)
+echo -e ${SEM_COR}
+
 echo -e ${AZUL}
 echo -e "${AZUL}|:<=================================================================>:|${SEM_COR}"
 echo -e "${WHITE}|:|                   Reinicieo o sistema ..!                       |:|${SEM_COR}"
 echo -e "${AZUL}|:<=================================================================>:|${SEM_COR}"
+
+echo -e ${CIANO}
+echo "|:<=================================================================>:|"
+echo "|:>==                 Configurando o zsh/ohMyZsh                  >==:|"
+echo "|:<=================================================================>:|"
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
