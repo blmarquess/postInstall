@@ -32,6 +32,7 @@ PROGRAMAS_DEB=(
   docker-ce
   docker-compose
   gh
+  neovim
 )
 
 SNAP_APPS=(
@@ -333,6 +334,18 @@ echo -e "${WHITE}|:|                   Reinicieo o sistema ..!                  
 echo -e "${AZUL}|:<=================================================================>:|${SEM_COR}"
 
 echo -e ${CIANO}
+echo -e "${AZUL}|:<=================================================================>:|${SEM_COR}"
+echo -e "${WHITE}|:|                       Configurando dock                         |:|${SEM_COR}"
+echo -e "${AZUL}|:<=================================================================>:|${SEM_COR}"
+gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 24
+gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-background-shadow-radius 6
+gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-background-shadow-enabled false
+gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-enabled true
+
 echo "|:<=================================================================>:|"
 echo "|:>==                 Configurando o zsh/ohMyZsh                  >==:|"
 echo "|:<=================================================================>:|"
