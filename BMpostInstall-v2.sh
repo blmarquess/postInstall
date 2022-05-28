@@ -30,7 +30,6 @@ PROGRAMAS_DEB=(
   folder-color
   software-properties-common
   docker-ce
-  docker-compose
   gh
   neovim
 )
@@ -287,13 +286,6 @@ echo -e ${SEM_COR}
 sudo usermod -aG docker ${USER}
 su - ${USER}
 
-echo -e ${VERDE}
-echo "|:<=================================================================>:|"
-echo "|:>==         Verificando atualizações e limpando cache           >==:|"
-echo "|:<=================================================================>:|"
-
-sudo apt update && sudo apt dist-upgrade -y && sudo apt autoclean -y && sudo apt autoremove -y &&
-
 echo "|:<=================================================================>:|"
 echo "|:>==                        Finalizado                           >==:|"
 echo "|:<=================================================================>:|"
@@ -313,11 +305,12 @@ echo "|:<=================================================================>:|"
 echo "|:|        ----      Instalando DockerHub Desktop      ----         |:|"
 echo "|:<=================================================================>:|"
 
-curl https://desktop-stage.docker.com/linux/main/amd64/77103/docker-desktop.deb --output docker-desktop.deb
+curl https://desktop.docker.com/linux/main/amd64/docker-desktop-4.8.2-amd64.deb --output docker-desktop.deb
 sudo dpkg -i docker-desktop.deb
 
 sudo apt install -f -y
 
+systemctl --user start docker-desktop
 systemctl --user enable docker-desktop
 
 
@@ -326,17 +319,7 @@ echo "|:|        ----     Definindo zsh como shell padrão    ----         |:|"
 echo "|:<=================================================================>:|"
 
 chsh -s $(which zsh)
-echo -e ${SEM_COR}
 
-echo -e ${AZUL}
-echo -e "${AZUL}|:<=================================================================>:|${SEM_COR}"
-echo -e "${WHITE}|:|                   Reinicieo o sistema ..!                       |:|${SEM_COR}"
-echo -e "${AZUL}|:<=================================================================>:|${SEM_COR}"
-
-echo -e ${CIANO}
-echo -e "${AZUL}|:<=================================================================>:|${SEM_COR}"
-echo -e "${WHITE}|:|                       Configurando dock                         |:|${SEM_COR}"
-echo -e "${AZUL}|:<=================================================================>:|${SEM_COR}"
 gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
@@ -345,6 +328,13 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 24
 gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-background-shadow-radius 6
 gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-background-shadow-enabled false
 gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-enabled true
+
+echo -e ${SEM_COR}
+
+echo -e ${AZUL}
+echo -e "${AZUL}|:<=================================================================>:|${SEM_COR}"
+echo -e "${WHITE}|:|                   Reinicieo o sistema ..!                       |:|${SEM_COR}"
+echo -e "${AZUL}|:<=================================================================>:|${SEM_COR}"
 
 echo "|:<=================================================================>:|"
 echo "|:>==                 Configurando o zsh/ohMyZsh                  >==:|"
