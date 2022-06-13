@@ -18,7 +18,6 @@ PROGRAMAS_DEB=(
   make
   dkms
   libssl-dev
-  winff
   python3
   zsh
   gdebi
