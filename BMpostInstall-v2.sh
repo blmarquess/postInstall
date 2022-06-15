@@ -43,8 +43,6 @@ SNAP_APPS=(
 
 FLATPAK_APPS=(
 com.obsproject.Studio
-com.sublimetext.three
-io.dbeaver.DBeaverCommunity
 com.discordapp.Discord
 org.videolan.VLC
 org.telegram.desktop
@@ -60,13 +58,12 @@ md.obsidian.Obsidian
 com.github.alainm23.planner
 com.microsoft.Teams
 org.gimp.GIMP
-com.brave.Browser
 com.ktechpit.wonderwall
 com.microsoft.Edge
+com.google.Chrome
 flathub com.slack.Slack
 io.github.prateekmedia.appimagepool
 com.getpostman.Postman
-com.google.Chrome
 net.codeindustry.MasterPDFEditor
 us.zoom.Zoom
 com.github.wwmm.easyeffects
@@ -276,6 +273,29 @@ git config --global core.editor "code --wait"
 
   echo -e ${SEM_COR}
 
+echo "|:<=================================================================>:|"
+echo "|:>==                        Finalizado                           >==:|"
+echo "|:<=================================================================>:|"
+echo -e ${SEM_COR}
+
+echo "|:<=================================================================>:|"
+echo "|:|        ----     Definindo zsh como shell padrão    ----         |:|"
+echo "|:<=================================================================>:|"
+
+chsh -s $(which zsh)
+
+gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true
+gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 28
+gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-background-shadow-radius 6
+gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-background-shadow-enabled false
+gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-enabled true
+
+echo -e ${SEM_COR}
+
+
 echo -e ${CIANO}
 echo "|:<=================================================================>:|"
 echo "|:|                      Configurando o docker                      |:|"
@@ -286,58 +306,13 @@ sudo usermod -aG docker ${USER}
 su - ${USER}
 
 echo "|:<=================================================================>:|"
-echo "|:>==                        Finalizado                           >==:|"
-echo "|:<=================================================================>:|"
-echo -e ${SEM_COR}
-
-echo -e ${LARANJA}
-echo "|:<=================================================================>:|"
-echo "|:|                  Essa é a chave ssh desta maquina               |:|"
-echo " "
-cat ~/.ssh/id_ed25519.pub
-echo "|:      so copiar e cole em sua lista do  GitHub de keys ssh        |:|"
-echo " "
-echo "|:<=================================================================>:|"
-echo -e ${SEM_COR}
-
-echo "|:<=================================================================>:|"
-echo "|:|        ----      Instalando DockerHub Desktop      ----         |:|"
-echo "|:<=================================================================>:|"
-
-curl https://desktop.docker.com/linux/main/amd64/docker-desktop-4.8.2-amd64.deb --output docker-desktop.deb
-sudo dpkg -i docker-desktop.deb
-
-sudo apt install -f -y
-
-systemctl --user start docker-desktop
-systemctl --user enable docker-desktop
-
-
-echo "|:<=================================================================>:|"
-echo "|:|        ----     Definindo zsh como shell padrão    ----         |:|"
-echo "|:<=================================================================>:|"
-
-chsh -s $(which zsh)
-
-gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
-gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
-gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
-gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
-gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 24
-gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-background-shadow-radius 6
-gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-background-shadow-enabled false
-gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-enabled true
-
-echo -e ${SEM_COR}
-
-echo -e ${AZUL}
-echo -e "${AZUL}|:<=================================================================>:|${SEM_COR}"
-echo -e "${WHITE}|:|                   Reinicieo o sistema ..!                       |:|${SEM_COR}"
-echo -e "${AZUL}|:<=================================================================>:|${SEM_COR}"
-
-echo "|:<=================================================================>:|"
 echo "|:>==                 Configurando o zsh/ohMyZsh                  >==:|"
 echo "|:<=================================================================>:|"
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+echo -e ${AZUL}
+echo -e "${AZUL}|:<=================================================================>:|${SEM_COR}"
+echo -e "${WHITE}|:|                   Reinicieo o sistema ..!                       |:|${SEM_COR}"
+echo -e "${AZUL}|:<=================================================================>:|${SEM_COR}"
