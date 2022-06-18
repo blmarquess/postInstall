@@ -21,6 +21,13 @@ wget https://raw.githubusercontent.com/blmarquess/postInstall/main/BMpostInstall
 sudo chmod a+x BMpostInstall-v2.sh && ./BMpostInstall-v2.sh
 ```
 
+De permissão ao seu usuario para usar o docker sem usar "sudo
+
+```shell
+sudo usermod -aG docker ${USER}
+su - ${USER}
+```
+
 Então é só aguardar a execução e ao terminar reinicie a maquina e ja estará tudo instalado com a chave ssh criada pronta para registrar no github.
 
 O Github CLI esta instalado para autenticar seu usuário execute:
