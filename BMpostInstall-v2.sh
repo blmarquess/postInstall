@@ -295,16 +295,6 @@ gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-enabled true
 
 echo -e ${SEM_COR}
 
-
-echo -e ${CIANO}
-echo "|:<=================================================================>:|"
-echo "|:|                      Configurando o docker                      |:|"
-echo "|:<=================================================================>:|"
-echo -e ${SEM_COR}
-
-sudo usermod -aG docker ${USER}
-su - ${USER}
-
 echo "|:<=================================================================>:|"
 echo "|:>==                 Configurando o zsh/ohMyZsh                  >==:|"
 echo "|:<=================================================================>:|"
