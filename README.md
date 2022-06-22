@@ -78,6 +78,21 @@ Siga os passos para autenticar no github e utilizar o GitHub CLI
 - MasterPDFEditor
 - Zoom Meeting
 
+### Proximas etapas
+
+ - [ ]  Criar uma interface grafica para que possa ser selecionado quais aplicações serão instaladas.
+
+<br />
+
+### Apoie o desenvolvimento
+
+ - Marque como favorito
+
+
+ - Se encontrar algum erro abra uma issue ou manda um e-mail
+
+
+ - E se conseguir me paga um café. 😃
 
 <div align='center'>
 		
