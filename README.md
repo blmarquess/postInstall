@@ -84,6 +84,10 @@ Siga os passos para autenticar no github e utilizar o GitHub CLI
 
 <br />
 
+### Para instalar os drives de video
+
+[Guia de instalação de drives no linux](https://github.com/blmarquess/postInstall/blob/main/install-drives-GPU.md)
+
 ### Apoie o desenvolvimento
 
  - Marque como favorito
