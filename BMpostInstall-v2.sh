@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 #CORES
 VERMELHO='\e[1;91m'
