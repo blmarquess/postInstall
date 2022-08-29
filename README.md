@@ -17,8 +17,8 @@ Clique com o botão direito sobre ele selecione propriedades, vá até a aba per
 Copie o código abaixo e cole no terminal
 
 ```shell
-wget https://github.com/blmarquess/postInstall/releases/download/slim_v0.2/install_v2_1 &&
-sudo chmod a+x install_v2_1 && ./install_v2_1
+wget https://github.com/blmarquess/postInstall/releases/download/slim_v0.2/BMpostInstall-v2.1.sh &&
+sudo chmod a+x BMpostInstall-v2.1.sh && ./BMpostInstall-v2.1.sh
 ```
 
 De permissão ao seu usuario para usar o docker sem usar "sudo
